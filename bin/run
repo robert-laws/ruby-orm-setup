@@ -1,4 +1,12 @@
 require 'sqlite3'
 
-require_relative "../config/environment.rb"
 require_relative "../lib/people.rb"
+require_relative "../config/environment.rb"
+
+friend = Friends.new(name: "Bob Cobb", age: 43, location: "Washington DC")
+puts "friend name: " + friend.name
+puts "friend age: " + friend.age.to_s
+puts "friend location: " + friend.location
+friend.save
+
+DB[:conn].execute("SELECT * FROM friends")
